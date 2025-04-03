@@ -14,6 +14,13 @@ ThreadedSolver::ThreadedSolver(ThreadPool &threadPool):
     threadPool(threadPool)
 {}
 
+ThreadedSolver::~ThreadedSolver() {
+    particles.clear();
+    grid.clear();
+    colorQueue.clear();
+}
+
+
 Particle &ThreadedSolver::AddParticle(Vector2 position, float radius, Color color) {
     return this->particles.emplace_back(position, radius, color, static_cast<int>(particles.size()));
 }

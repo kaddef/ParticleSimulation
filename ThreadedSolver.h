@@ -42,6 +42,7 @@ private:
     void SolveCollision();
 public:
     ThreadedSolver(ThreadPool& threadPool);
+    ~ThreadedSolver();
     Particle& AddParticle(Vector2 position, float radius, Color color);
     void Update();
     void DrawParticles(); // Move Drawing from here
