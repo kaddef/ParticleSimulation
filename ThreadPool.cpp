@@ -12,6 +12,13 @@ ThreadPool::ThreadPool(int numberOfThreads):
         threads.emplace_back(taskQueue, i);
 }
 
+ThreadPool::~ThreadPool() {
+    for (auto& thread : threads) {
+        thread.stop();
+    }
+    threads.clear();
+}
+
 void ThreadPool::Parallel(int num_obj, std::function<void(int start, int end)>&& callback) {
     int sliceSize = num_obj / numberOfThreads;
     for (int i = 0; i < numberOfThreads; i++) {

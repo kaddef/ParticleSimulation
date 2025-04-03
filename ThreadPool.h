@@ -16,6 +16,7 @@ private:
 public:
     // ThreadPool() = default;
     ThreadPool(int numberOfThreads);
+    ~ThreadPool();
     void Parallel(int num_obj, std::function<void(int start, int end)>&& callback);
 };
 
