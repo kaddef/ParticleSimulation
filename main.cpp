@@ -3,7 +3,6 @@
 #include <string>
 #include "raylib.h"
 #include "Solver.h"
-#include "ThreadedSolver.h"
 
 int main()
 {
@@ -12,9 +11,9 @@ int main()
 
     InitWindow(screenWidth, screenHeight, "Particle Simulation");
     // Init
-    // Solver solver;
-    ThreadPool threadPool(4);
-    ThreadedSolver solver(threadPool);
+    Solver solver;
+    // ThreadPool threadPool(4);
+    // ThreadedSolver solver(threadPool);
 
     solver.SetBoundary({400,400}, 400.00);
     SetTargetFPS(60);
@@ -22,7 +21,7 @@ int main()
     while (!WindowShouldClose())
     {
         if (!solver.spawnComplete) {
-            solver.InitiateParticles(1400, true);
+            solver.InitiateParticles(1000, false);
         }
 
         solver.Update();
@@ -38,6 +37,8 @@ int main()
     }
 
     // De-Initialization
+    // threadPool.~ThreadPool();
+    // solver.~ThreadedSolver();
     CloseWindow();
     return 0;
 }

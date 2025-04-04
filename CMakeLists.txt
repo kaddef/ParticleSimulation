@@ -37,8 +37,6 @@ add_executable(ParticleSimulation main.cpp
         Thread.h
         ThreadPool.cpp
         ThreadPool.h
-        ThreadedSolver.cpp
-        ThreadedSolver.h
         Boundary.h
 )
 
